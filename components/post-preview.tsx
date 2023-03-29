@@ -4,6 +4,8 @@ import CoverImage from './cover-image'
 import Link from 'next/link'
 import type Author from '../interfaces/author'
 
+import { Container, Box, Text } from '@chakra-ui/layout'
+
 type Props = {
   title: string
   coverImage: string
@@ -27,13 +29,19 @@ const PostPreview = ({
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
-        <Link
-          as={`/posts/${slug}`}
-          href="/posts/[slug]"
-          className="hover:underline"
+        <Text
+          // as={'b'}
+          fontSize={'2xl'}
+          fontFamily={"Hannotate SC"}
         >
-          {title}
-        </Link>
+          <Link
+            as={`/posts/${slug}`}
+            href="/posts/[slug]"
+            className="hover:underline"
+          >
+            {title}
+          </Link>
+        </Text>
       </h3>
       <div className="text-lg mb-4">
         <DateFormatter dateString={date} />

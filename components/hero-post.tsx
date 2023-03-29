@@ -4,6 +4,8 @@ import CoverImage from './cover-image'
 import Link from 'next/link'
 import type Author from '../interfaces/author'
 
+import { Container, Box, Text } from '@chakra-ui/layout'
+
 type Props = {
   title: string
   coverImage: string
@@ -29,13 +31,19 @@ const HeroPost = ({
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
           <h3 className="mb-4 text-4xl lg:text-5xl leading-tight">
-            <Link
-              as={`/posts/${slug}`}
-              href="/posts/[slug]"
-              className="hover:underline"
+            <Text
+              // as={'b'}
+              fontSize={'2xl'}
+              fontFamily={"Hannotate SC"}
             >
-              {title}
-            </Link>
+              <Link
+                as={`/posts/${slug}`}
+                href="/posts/[slug]"
+                className="hover:underline"
+              >
+                {title}
+              </Link>
+            </Text>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
             <DateFormatter dateString={date} />

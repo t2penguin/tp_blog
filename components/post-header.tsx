@@ -4,6 +4,8 @@ import CoverImage from './cover-image'
 import PostTitle from './post-title'
 import type Author from '../interfaces/author'
 
+import { Container, Box, Text } from '@chakra-ui/layout'
+
 type Props = {
   title: string
   coverImage: string
@@ -14,7 +16,14 @@ type Props = {
 const PostHeader = ({ title, coverImage, date, author }: Props) => {
   return (
     <>
-      <PostTitle>{title}</PostTitle>
+      {/* <PostTitle>{title}</PostTitle> */}
+      <Text
+        as={'b'}
+        fontSize={'4xl'}
+      >
+        {title}
+      </Text>
+
       <div className="hidden md:block md:mb-12">
         <Avatar name={author.name} picture={author.picture} />
       </div>

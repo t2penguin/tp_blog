@@ -4,13 +4,19 @@
 
 .markdown p,
 .markdown ul,
-.markdown ol,
-.markdown blockquote {
+.markdown ol {
+  /* .markdown blockquote  { */
   @apply my-6;
+  font-family: "ヒラギノ角ゴ ProN W3";
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .markdown h2 {
   @apply text-3xl mt-12 mb-4 leading-snug;
+  font-weight: 800;
+  /* font-family: "Hannotate SC"; */
+  /* font-family: "HiraMinProN-W6"; */
 }
 
 .markdown h3 {

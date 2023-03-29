@@ -1,12 +1,20 @@
-import Container from '../components/container'
+// import Container from '../components/container'
 import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
+// import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../interfaces/post'
+
+import Header from '../components/myheader.js'
+import Intro from '../components/myintro'
+import { Container, Box, Text } from '@chakra-ui/layout'
+import {
+  useDisclosure,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
 type Props = {
   allPosts: Post[]
@@ -15,27 +23,43 @@ type Props = {
 export default function Index({ allPosts }: Props) {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
+
+  const { isOpen, onToggle } = useDisclosure();
+
   return (
     <>
-      <Layout>
-        <Head>
-          <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
-        </Head>
-        <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
-      </Layout>
+      <Box
+        bg={useColorModeValue('#F0E7DB', '#202023')}
+      >
+
+        <Layout>
+          <Head>
+            {/* ホームページのタイトル */}
+            <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
+            <script src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
+          </Head>
+
+          <Header />
+
+          <Container
+            maxW={"75ch"}
+          >
+            <Intro />
+            {heroPost && (
+              <HeroPost
+                title={heroPost.title}
+                coverImage={heroPost.coverImage}
+                date={heroPost.date}
+                author={heroPost.author}
+                slug={heroPost.slug}
+                excerpt={heroPost.excerpt}
+              />
+            )}
+            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          </Container>
+        </Layout>
+
+      </Box>
     </>
   )
 }
